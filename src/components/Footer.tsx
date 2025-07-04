@@ -5,10 +5,10 @@ import Logo from "./Logo";
 import Link from "next/link";
 
 const Footer = () => {
-  const [year, setYear] = useState<number | null>(null);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setYear(new Date().getFullYear());
+    setIsClient(true);
   }, []);
   
   const footerLinks = [
@@ -63,7 +63,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-12 pt-8 border-t border-neutral-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-neutral-500">
-          <p>&copy; {year || '...'} ফ্রস্টফো, Inc. সর্বস্বত্ব সংরক্ষিত।</p>
+          <p>&copy; {isClient ? new Date().getFullYear() : '...'} ফ্রস্টফো, Inc. সর্বস্বত্ব সংরক্ষিত।</p>
           <p>ক্যালিফোর্নিয়ায় ডিজাইন করা হয়েছে।</p>
         </div>
       </div>
