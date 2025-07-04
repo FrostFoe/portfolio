@@ -28,23 +28,23 @@ export default function Hero() {
   };
 
   return (
-    <div className="relative flex items-center justify-center h-[90vh] w-full">
+    <div className="relative flex items-center justify-center w-full text-center px-6 py-32 sm:py-40">
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white p-6"
+        className="relative z-10 flex flex-col items-center text-white"
       >
         <motion.h1
           variants={itemVariants}
-          className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tighter uppercase"
+          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter uppercase"
           style={{ textShadow: '0 0 25px hsla(212, 96% 47%, 0.7)' }}
         >
           স্টাইলের এক নতুন যুগ
         </motion.h1>
         <motion.p
           variants={itemVariants}
-          className="mt-6 max-w-2xl mx-auto text-lg text-gray-300 backdrop-blur-sm p-4 rounded-xl"
+          className="mt-6 max-w-xl sm:max-w-2xl mx-auto text-base sm:text-lg text-gray-300 backdrop-blur-sm p-4 rounded-xl"
         >
           আমাদের যুগান্তকারী 3D-অনুপ্রাণিত সংগ্রহের সাথে ফ্যাশনের ভবিষ্যৎ অন্বেষণ করুন। অতুলনীয় ভিজ্যুয়াল গভীরতা এবং গতির সাথে আপনার স্টাইল প্রকাশ করুন।
         </motion.p>
