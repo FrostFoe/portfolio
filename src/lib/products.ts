@@ -23,13 +23,14 @@ export type Product = {
   [key: string]: any;
 };
 
-const productFileNames = [
-  'landing-page.mdx',
-  'portfolio-starter.mdx',
-  'ecommerce-kit.mdx',
-];
-
 export function getProducts(): Product[] {
+  if (!fs.existsSync(productsDirectory)) {
+    return [];
+  }
+  
+  const productFileNames = fs.readdirSync(productsDirectory)
+    .filter(fileName => fileName.endsWith('.mdx'));
+
   const allProductsData = productFileNames.map((fileName) => {
     const id = fileName.replace(/\.mdx$/, '');
     const fullPath = path.join(productsDirectory, fileName);
