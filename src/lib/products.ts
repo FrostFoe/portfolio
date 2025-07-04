@@ -20,6 +20,7 @@ export type Product = {
   images: { src: string; alt: string; hint: string }[];
   pricingOptions: PricingOption[];
   content: string;
+  tags: string[];
   ctaUrl?: string;
   published?: boolean;
   [key: string]: any;
@@ -68,7 +69,6 @@ export async function getProductData(id: string): Promise<Product | null> {
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
   
-    // Validate that essential data exists to prevent render errors
     if (!data.title || !data.imageSrc || !Array.isArray(data.images) || data.images.length === 0) {
       console.error(`Validation failed: Product with id '${id}' is missing essential data.`);
       return null;

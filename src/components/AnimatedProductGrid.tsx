@@ -1,15 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import ProductCard from '@/components/ProductCard';
-
-interface Product {
-  id: string;
-  imageSrc: string;
-  title: string;
-  price: string;
-  imageHint: string;
-  className?: string;
-}
+import type { Product } from '@/lib/products';
 
 interface AnimatedProductGridProps {
     products: Product[];

@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import Link from "next/link";
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Search, ShoppingCart, Menu, X } from "lucide-react";
 import Logo from "./Logo";
 import { motion, AnimatePresence } from "framer-motion";
@@ -11,6 +12,27 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { items } = useCart();
   const navLinks = ["সব", "পোর্টফোলিও", "ই-কমার্স"];
+
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '');
+
+  useEffect(() => {
+    setSearchQuery(searchParams.get('q') || '');
+  }, [searchParams]);
+
+  const handleSearch = (e: FormEvent) => {
+    e.preventDefault();
+    const formattedQuery = searchQuery.trim();
+    if (formattedQuery) {
+        router.push(`/?q=${encodeURIComponent(formattedQuery)}`);
+    } else {
+        router.push('/');
+    }
+    if (isMenuOpen) {
+      toggleMenu();
+    }
+  };
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -38,16 +60,18 @@ const Navbar = () => {
           </nav>
 
           <div className="flex items-center gap-4 justify-self-end">
-            <div className="hidden lg:block relative w-64">
-              <input
-                type="search"
-                placeholder="টেমপ্লেট খুঁজুন..."
-                className="bg-neutral-900 border-neutral-800 text-gray-300 placeholder-gray-500 rounded-md py-2 pl-4 pr-10 w-full focus:outline-none focus:ring-1 focus:ring-primary transition-all text-sm"
-              />
-              <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                <Search className="h-4 w-4 text-gray-500" />
-              </div>
-            </div>
+             <form onSubmit={handleSearch} className="hidden lg:block relative w-64">
+                <input
+                    type="search"
+                    placeholder="ট্যাগ বা নাম দিয়ে খুঁজুন..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="bg-neutral-900 border-neutral-800 text-gray-300 placeholder-gray-500 rounded-md py-2 pl-4 pr-10 w-full focus:outline-none focus:ring-1 focus:ring-primary transition-all text-sm"
+                />
+                <button type="submit" className="absolute inset-y-0 right-0 flex items-center pr-3" aria-label="Search">
+                    <Search className="h-4 w-4 text-gray-500" />
+                </button>
+            </form>
 
             <Link href="/cart" aria-label="Open cart" className="hidden lg:block relative">
               <ShoppingCart className="h-6 w-6 text-gray-400 hover:text-white transition-colors" />
@@ -89,16 +113,18 @@ const Navbar = () => {
                    </Link>
                  ))}
                </nav>
-               <div className="relative w-full max-w-sm">
+               <form onSubmit={handleSearch} className="relative w-full max-w-sm">
                  <input
                    type="search"
-                   placeholder="টেমপ্লেট খুঁজুন..."
+                   placeholder="ট্যাগ বা নাম দিয়ে খুঁজুন..."
+                   value={searchQuery}
+                   onChange={(e) => setSearchQuery(e.target.value)}
                    className="bg-neutral-800 border-neutral-700 text-gray-300 placeholder-gray-500 rounded-md py-2 pl-4 pr-10 w-full focus:outline-none focus:ring-1 focus:ring-primary transition-all text-sm"
                  />
-                 <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                 <button type="submit" className="absolute inset-y-0 right-0 flex items-center pr-3" aria-label="Search">
                    <Search className="h-4 w-4 text-gray-500" />
-                 </div>
-               </div>
+                 </button>
+               </form>
                <Link href="/cart" aria-label="Open cart" className="relative flex items-center gap-2 text-gray-300 hover:text-white" onClick={toggleMenu}>
                  <ShoppingCart className="h-6 w-6" />
                  <span>কার্ট</span>
