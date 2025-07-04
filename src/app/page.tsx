@@ -1,9 +1,8 @@
-
 import { Suspense } from 'react';
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import { getProducts } from "@/lib/products";
+import Footer from '@/components/Footer';
+import Navbar from '@/components/Navbar';
+import Hero from '@/components/Hero';
+import { getProducts } from '@/lib/products';
 import HomeClient from '@/components/HomeClient';
 import { Skeleton } from '@/components/ui/skeleton';
 
@@ -20,7 +19,7 @@ function ProductGridSkeleton() {
         </div>
       ))}
     </div>
-  )
+  );
 }
 
 function Loading() {
@@ -46,6 +45,7 @@ export default async function Home() {
       <main className="flex-grow">
         <Hero />
         <Suspense fallback={<Loading />}>
+          {/* This is the client component that uses searchParams */}
           <HomeClient products={products} />
         </Suspense>
       </main>
