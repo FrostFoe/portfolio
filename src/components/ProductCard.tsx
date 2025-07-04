@@ -3,6 +3,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 interface ProductCardProps {
+  id: string;
   imageSrc: string;
   title: string;
   price: string;
@@ -11,6 +12,7 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({
+  id,
   imageSrc,
   title,
   price,
@@ -18,7 +20,10 @@ const ProductCard = ({
   className,
 }: ProductCardProps) => {
   return (
-    <Link href="#" className={cn("group h-full", className)}>
+    <Link
+      href={`/product/${id}`}
+      className={cn("group h-full", className)}
+    >
       <article className="relative w-full h-full overflow-hidden rounded-lg border border-neutral-800 bg-black group-hover:border-primary/80 transition-colors duration-300">
         <Image
           src={imageSrc}
