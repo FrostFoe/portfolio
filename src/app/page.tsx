@@ -2,53 +2,10 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import AnimatedProductGrid from "@/components/AnimatedProductGrid";
 import Hero from "@/components/Hero";
+import { getProducts } from "@/lib/products";
 
 export default function Home() {
-  const products = [
-    {
-      id: "acme-circles-t-shirt",
-      imageSrc: "https://placehold.co/1200x1200.png",
-      title: "Acme Circles T-Shirt",
-      price: "20.00",
-      imageHint: "t-shirt black",
-      className: "lg:col-span-2 lg:row-span-2",
-    },
-    {
-      id: "acme-drawstring-bag",
-      imageSrc: "https://placehold.co/600x600.png",
-      title: "Acme Drawstring Bag",
-      price: "12.00",
-      imageHint: "drawstring bag",
-    },
-    {
-      id: "acme-cup",
-      imageSrc: "https://placehold.co/600x600.png",
-      title: "Acme Cup",
-      price: "15.00",
-      imageHint: "white cup",
-    },
-    {
-      id: "acme-mug",
-      imageSrc: "https://placehold.co/600x600.png",
-      title: "Acme Mug",
-      price: "15.00",
-      imageHint: "black mug cork",
-    },
-    {
-      id: "acme-hoodie",
-      imageSrc: "https://placehold.co/600x600.png",
-      title: "Acme Hoodie",
-      price: "50.00",
-      imageHint: "black hoodie",
-    },
-    {
-      id: "acme-baby-onesie",
-      imageSrc: "https://placehold.co/600x600.png",
-      title: "Acme Baby Onesie",
-      price: "10.00",
-      imageHint: "baby onesie",
-    },
-  ];
+  const products = getProducts();
 
   return (
     <div className="flex flex-col min-h-screen">
