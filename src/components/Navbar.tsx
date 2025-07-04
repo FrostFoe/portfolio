@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navLinks = ["All", "Portfolio", "E-commerce"];
+  const navLinks = ["সব", "পোর্টফোলিও", "ই-কমার্স"];
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -18,7 +18,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-full max-w-7xl mx-auto px-6">
           <Link href="/" aria-label="Go to homepage" className="flex items-center gap-2.5" onClick={() => setIsMenuOpen(false)}>
             <Logo />
-            <span className="font-semibold text-white hidden sm:block">FrostFoe</span>
+            <span className="font-semibold text-white hidden sm:block">ফ্রস্টফো</span>
           </Link>
 
           <nav className="hidden lg:flex items-center gap-6">
@@ -37,7 +37,7 @@ const Navbar = () => {
             <div className="hidden lg:block relative w-64">
               <input
                 type="search"
-                placeholder="Search templates..."
+                placeholder="টেমপ্লেট খুঁজুন..."
                 className="bg-neutral-900 border-neutral-800 text-gray-300 placeholder-gray-500 rounded-md py-2 pl-4 pr-10 w-full focus:outline-none focus:ring-1 focus:ring-primary transition-all text-sm"
               />
               <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
@@ -83,7 +83,7 @@ const Navbar = () => {
                <div className="relative w-full max-w-sm">
                  <input
                    type="search"
-                   placeholder="Search templates..."
+                   placeholder="টেমপ্লেট খুঁজুন..."
                    className="bg-neutral-800 border-neutral-700 text-gray-300 placeholder-gray-500 rounded-md py-2 pl-4 pr-10 w-full focus:outline-none focus:ring-1 focus:ring-primary transition-all text-sm"
                  />
                  <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
@@ -92,7 +92,7 @@ const Navbar = () => {
                </div>
                <button aria-label="Open cart" className="flex items-center gap-2 text-gray-300 hover:text-white">
                  <ShoppingCart className="h-6 w-6" />
-                 <span>Cart</span>
+                 <span>কার্ট</span>
                </button>
             </div>
           </motion.div>

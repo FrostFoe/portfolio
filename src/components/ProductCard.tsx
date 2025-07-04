@@ -44,7 +44,7 @@ const ProductCard = ({
                 </h3>
               </div>
               <div className="rounded-full bg-primary text-primary-foreground font-bold text-sm py-2 px-5 shadow-lg">
-                <span>${price}</span>
+                <span>৳{price}</span>
               </div>
             </div>
           </div>

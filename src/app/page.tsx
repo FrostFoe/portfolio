@@ -16,10 +16,10 @@ export default function Home() {
           <div className="py-24 px-6 max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white bg-clip-text text-transparent bg-gradient-to-r from-gray-200 to-gray-500">
-                Featured Templates
+                ফিচার্ড টেমপ্লেট
               </h2>
               <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-400">
-                Each template is crafted with precision for the modern web.
+                প্রতিটি টেমপ্লেট আধুনিক ওয়েবের জন্য নির্ভুলতার সাথে তৈরি।
               </p>
             </div>
             <AnimatedProductGrid products={products} />

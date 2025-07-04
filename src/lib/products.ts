@@ -4,16 +4,20 @@ import matter from 'gray-matter';
 
 const productsDirectory = path.join(process.cwd(), 'src/content/products');
 
+export type PricingOption = {
+  name: string;
+  price: string;
+};
+
 export type Product = {
   id: string;
-  title: string;
+  title:string;
   price: string;
   imageSrc: string;
   imageHint: string;
   className?: string;
   images: { src: string; alt: string; hint: string }[];
-  colors: string[];
-  sizes: string[];
+  pricingOptions: PricingOption[];
   content: string;
   ctaUrl?: string;
   [key: string]: any;

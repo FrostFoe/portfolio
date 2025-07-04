@@ -40,20 +40,20 @@ export default function Hero() {
           className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter uppercase"
           style={{ textShadow: '0 0 25px hsla(217.2, 91.2%, 59.8%, 0.7)' }}
         >
-          Stunning Web Templates
+          আকর্ষণীয় ওয়েব টেমপ্লেট
         </motion.h1>
         <motion.p
           variants={itemVariants}
           className="mt-6 max-w-xl sm:max-w-2xl mx-auto text-base sm:text-lg text-gray-300 backdrop-blur-sm p-4 rounded-xl"
         >
-          Elevate your online presence with professionally designed, fully responsive templates built with the latest web technologies.
+          আপনার অনলাইন উপস্থিতিকে উন্নত করুন পেশাদারভাবে ডিজাইন করা, সম্পূর্ণ প্রতিক্রিয়াশীল টেমপ্লেট দিয়ে যা সর্বশেষ ওয়েব প্রযুক্তি দিয়ে তৈরি।
         </motion.p>
         <motion.div variants={itemVariants} className="mt-8 flex justify-center gap-4">
           <Button size="lg" className="bg-primary hover:bg-primary/90 text-base font-medium py-6 px-8 rounded-full shadow-lg shadow-primary/50 transform hover:scale-105 transition-transform duration-300">
-            Browse Templates
+            টেমপ্লেট দেখুন
           </Button>
           <Button size="lg" variant="outline" className="text-base font-medium py-6 px-8 rounded-full border-2 border-white bg-transparent hover:bg-white hover:text-black transform hover:scale-105 transition-all duration-300">
-            Learn More
+            আরও জানুন
           </Button>
         </motion.div>
       </motion.div>

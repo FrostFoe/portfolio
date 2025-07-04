@@ -2,15 +2,13 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import ProductGallery from '@/components/ProductGallery';
 import { Button } from '@/components/ui/button';
 import { Plus, Download } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import type { Product } from '@/lib/products';
+import type { Product, PricingOption } from '@/lib/products';
 
 export default function ProductDetails({ product }: { product: Product }) {
-  const [selectedColor, setSelectedColor] = useState(product.colors[0]);
-  const [selectedSize, setSelectedSize] = useState(product.sizes[1] || product.sizes[0]);
+  const [selectedOption, setSelectedOption] = useState<PricingOption>(product.pricingOptions[0]);
 
   const mainVariants = {
     hidden: { opacity: 0 },
@@ -22,7 +20,7 @@ export default function ProductDetails({ product }: { product: Product }) {
     visible: { opacity: 1, y: 0, transition: { type: 'spring' } },
   };
 
-  const isFree = product.price === '0.00';
+  const isFree = selectedOption.price === '0.00';
 
   const CtaButton = (
     <Button size="lg" className="bg-primary hover:bg-primary/90 w-full text-base font-medium py-6">
@@ -31,7 +29,7 @@ export default function ProductDetails({ product }: { product: Product }) {
         ) : (
           <Plus className="mr-2 h-5 w-5" />
         )}
-        {isFree ? 'Get Now' : 'Add to Cart'}
+        {isFree ? 'এখনই নিন' : 'কার্টে যোগ করুন'}
     </Button>
   );
 
@@ -43,57 +41,41 @@ export default function ProductDetails({ product }: { product: Product }) {
       animate="visible"
     >
       <motion.div variants={itemVariants}>
-        <ProductGallery images={product.images} />
+        <div className="sticky top-24">
+          <h1 className="text-4xl lg:text-5xl font-bold mb-4 lg:hidden">{product.title}</h1>
+          <div className="rounded-full bg-primary text-primary-foreground font-semibold text-sm py-2 px-4 w-fit mb-4 lg:hidden">
+            <span>৳{selectedOption.price}</span>
+          </div>
+        </div>
       </motion.div>
       
       <motion.div className="flex flex-col gap-8" variants={itemVariants}>
-        <div>
+        <div className="hidden lg:block">
           <h1 className="text-4xl lg:text-5xl font-bold mb-4">{product.title}</h1>
           <div className="rounded-full bg-primary text-primary-foreground font-semibold text-sm py-2 px-4 w-fit">
-            <span>${product.price} USD</span>
+            <span>৳{selectedOption.price}</span>
           </div>
         </div>
 
         <div className="flex flex-col gap-4">
           <div>
-            <h2 className="text-sm font-medium tracking-wide text-gray-400 mb-3">Color</h2>
-            <div className="flex gap-2">
-              {product.colors.map((color) => (
+            <h2 className="text-sm font-medium tracking-wide text-gray-400 mb-3">পরিষেবার ধরণ</h2>
+            <div className="flex flex-col gap-2">
+              {product.pricingOptions.map((option) => (
                 <Button
-                  key={color}
+                  key={option.name}
                   variant="outline"
-                  onClick={() => setSelectedColor(color)}
+                  onClick={() => setSelectedOption(option)}
                   className={cn(
-                    'px-4 py-2 rounded-full text-sm font-normal h-auto',
+                    'px-4 py-3 rounded-lg text-base font-normal h-auto justify-between',
                     'border-neutral-800 hover:border-white transition-colors',
                     {
-                      'border-white ring-1 ring-white': selectedColor === color,
+                      'border-white ring-2 ring-white': selectedOption.name === option.name,
                     }
                   )}
                 >
-                  {color}
-                </Button>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h2 className="text-sm font-medium tracking-wide text-gray-400 mb-3">Style</h2>
-            <div className="flex flex-wrap gap-2">
-              {product.sizes.map((size) => (
-                <Button
-                  key={size}
-                  variant="outline"
-                  onClick={() => setSelectedSize(size)}
-                  className={cn(
-                    'px-4 py-2 rounded-full text-sm font-normal h-auto w-14',
-                    'border-neutral-800 hover:border-white transition-colors',
-                    {
-                      'border-white ring-1 ring-white': selectedSize === size,
-                    }
-                  )}
-                >
-                  {size}
+                  <span>{option.name}</span>
+                  <span className="font-semibold">৳{option.price}</span>
                 </Button>
               ))}
             </div>

@@ -1,33 +1,34 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Hind_Siliguri } from "next/font/google";
 import dynamic from 'next/dynamic';
 import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 
 const AnimatedBackground = dynamic(() => import('@/components/AnimatedBackground'), {
   ssr: false,
-  loading: () => <div className="fixed top-0 left-0 w-full h-full -z-10 bg-black" />,
+  loading: () => <div className="fixed top-0 left-0 w-full h-full bg-black" />,
 });
 
-const inter = Inter({
-  subsets: ["latin"],
+const hindSiliguri = Hind_Siliguri({
+  subsets: ["bengali"],
+  weight: ['300', '400', '500', '600', '700'],
   display: 'swap',
 });
 
 export const metadata: Metadata = {
-  title: "FrostFoe - Modern Web Templates",
-  description: "High-quality, responsive, and customizable web templates built with Next.js and Tailwind CSS.",
+  title: "ফ্রস্টফো - আধুনিক ওয়েব টেমপ্লেট",
+  description: "নেক্সট.জেএস এবং টেইলউইন্ড সিএসএস দিয়ে তৈরি উচ্চ-মানের, প্রতিক্রিয়াশীল এবং কাস্টমাইজযোগ্য ওয়েব টেমপ্লেট।",
    openGraph: {
-    title: "FrostFoe - Modern Web Templates",
-    description: "Discover stunning templates designed for the modern web.",
+    title: "ফ্রস্টফো - আধুনিক ওয়েব টেমপ্লেট",
+    description: "আধুনিক ওয়েবের জন্য ডিজাইন করা অত্যাশ্চর্য টেমপ্লেটগুলো আবিষ্কার করুন।",
     type: 'website',
-    locale: 'en_US',
-    siteName: 'FrostFoe',
+    locale: 'bn_BD',
+    siteName: 'ফ্রস্টফো',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'FrostFoe - Modern Web Templates',
-    description: 'High-quality, responsive, and customizable web templates built with Next.js and Tailwind CSS.',
+    title: 'ফ্রস্টফো - আধুনিক ওয়েব টেমপ্লেট',
+    description: 'নেক্সট.জেএস এবং টেইলউইন্ড সিএসএস দিয়ে তৈরি উচ্চ-মানের, প্রতিক্রিয়াশীল এবং কাস্টমাইজযোগ্য ওয়েব টেমপ্লেট।',
   },
 };
 
@@ -37,8 +38,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${inter.className} text-foreground antialiased`}>
+    <html lang="bn" className="dark">
+      <body className={`${hindSiliguri.className} text-foreground antialiased`}>
         <AnimatedBackground />
         <div className="relative z-0">
           {children}
