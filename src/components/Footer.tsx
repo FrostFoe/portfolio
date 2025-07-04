@@ -1,7 +1,16 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Logo from "./Logo";
 import Link from "next/link";
 
 const Footer = () => {
+  const [year, setYear] = useState<number | null>(null);
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
+  
   const footerLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "#" },
@@ -54,7 +63,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-12 pt-8 border-t border-neutral-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-neutral-500">
-          <p>&copy; {new Date().getFullYear()} ACME, Inc. All rights reserved.</p>
+          <p>&copy; {year || '...'} ACME, Inc. All rights reserved.</p>
           <p>Designed in California.</p>
         </div>
       </div>

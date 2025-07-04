@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -76,10 +76,10 @@ export default function ProductGallery({ images }: ProductGalleryProps) {
         
         <div className="absolute top-1/2 left-4 right-4 flex justify-between -translate-y-1/2">
             <button onClick={handlePrev} className="p-2 rounded-full bg-secondary/50 backdrop-blur-sm text-white/80 hover:text-white hover:bg-secondary/75 transition-colors">
-                <ChevronLeftIcon className="h-6 w-6"/>
+                <ChevronLeft className="h-6 w-6"/>
             </button>
             <button onClick={handleNext} className="p-2 rounded-full bg-secondary/50 backdrop-blur-sm text-white/80 hover:text-white hover:bg-secondary/75 transition-colors">
-                <ChevronRightIcon className="h-6 w-6"/>
+                <ChevronRight className="h-6 w-6"/>
             </button>
         </div>
       </div>

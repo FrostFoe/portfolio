@@ -10,7 +10,6 @@ function Starfield() {
 
   useFrame((_state, delta) => {
     if (starsRef.current) {
-      // Add a slow, constant rotation
       starsRef.current.rotation.y += delta * 0.03;
     }
   });
@@ -18,13 +17,13 @@ function Starfield() {
   return (
     <Stars
       ref={starsRef}
-      radius={150}
+      radius={100}
       depth={50}
-      count={5000}
+      count={3000}
       factor={5}
       saturation={0}
-      fade // For appearing/disappearing effect
-      speed={1.5} // Controls the twinkling speed
+      fade
+      speed={1.5}
     />
   );
 }

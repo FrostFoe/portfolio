@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import ProductGallery from '@/components/ProductGallery';
 import { Button } from '@/components/ui/button';
-import { PlusIcon, ArrowDownTrayIcon } from '@heroicons/react/24/solid';
+import { Plus, Download } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { Product } from '@/lib/products';
 
@@ -27,9 +27,9 @@ export default function ProductDetails({ product }: { product: Product }) {
   const CtaButton = (
     <Button size="lg" className="bg-primary hover:bg-primary/90 w-full text-base font-medium py-6">
         {isFree ? (
-          <ArrowDownTrayIcon className="mr-2 h-5 w-5" />
+          <Download className="mr-2 h-5 w-5" />
         ) : (
-          <PlusIcon className="mr-2 h-5 w-5" />
+          <Plus className="mr-2 h-5 w-5" />
         )}
         {isFree ? 'Get Now' : 'Add To Cart'}
     </Button>

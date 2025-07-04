@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { MagnifyingGlassIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
+import { Search, ShoppingCart } from "lucide-react";
 import Logo from "./Logo";
 
 const Navbar = () => {
@@ -36,12 +36,12 @@ const Navbar = () => {
               className="bg-neutral-900 border-neutral-800 text-gray-300 placeholder-gray-500 rounded-md py-2 pl-4 pr-10 w-full focus:outline-none focus:ring-1 focus:ring-primary transition-all text-sm"
             />
             <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-              <MagnifyingGlassIcon className="h-4 w-4 text-gray-500" />
+              <Search className="h-4 w-4 text-gray-500" />
             </div>
           </div>
 
           <button aria-label="Open cart">
-            <ShoppingCartIcon className="h-6 w-6 text-gray-400 hover:text-white transition-colors" />
+            <ShoppingCart className="h-6 w-6 text-gray-400 hover:text-white transition-colors" />
           </button>
         </div>
       </div>

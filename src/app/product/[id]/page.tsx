@@ -1,4 +1,4 @@
-import { getProductData } from '@/lib/products';
+import { getProductData, getProducts } from '@/lib/products';
 import { notFound } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -12,6 +12,9 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     notFound();
   }
 
+  const allProducts = getProducts();
+  const relatedProducts = allProducts.filter((p) => p.id !== params.id);
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -19,7 +22,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         <div className="max-w-7xl mx-auto px-6 py-20">
           <ProductDetails product={product} />
         </div>
-        <RelatedProducts />
+        <RelatedProducts products={relatedProducts} />
       </main>
       <Footer />
     </div>
