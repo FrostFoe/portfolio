@@ -12,10 +12,10 @@ const Footer = () => {
   }, []);
   
   const footerLinks = [
-    { name: "হোম", href: "/" },
-    { name: "সম্পর্কে", href: "#" },
-    { name: "শর্তাবলী", href: "#" },
-    { name: "গোপনীয়তা নীতি", href: "#" },
+    { name: "Home", href: "/" },
+    { name: "About", href: "#" },
+    { name: "Terms of Service", href: "#" },
+    { name: "Privacy Policy", href: "#" },
   ];
 
   return (
@@ -25,22 +25,22 @@ const Footer = () => {
             <div className="flex flex-col items-start gap-4">
                  <Link href="/" aria-label="Homepage" className="flex items-center gap-2">
                     <Logo />
-                    <span className="font-semibold text-white text-lg">এ্যাকমি</span>
+                    <span className="font-semibold text-white text-lg">FrostFoe</span>
                 </Link>
-                <p className="text-sm text-neutral-500">স্টাইলের এক নতুন যুগ।</p>
+                <p className="text-sm text-neutral-500">Designs for the modern web.</p>
             </div>
             <div className="md:col-span-2 grid grid-cols-2 md:grid-cols-4 gap-8">
               <div>
-                <h3 className="font-semibold text-white mb-4">কেনাকাটা</h3>
+                <h3 className="font-semibold text-white mb-4">Templates</h3>
                 <ul className="space-y-3">
-                  <li><Link href="#" className="hover:text-white text-sm transition-colors">সব</Link></li>
-                  <li><Link href="#" className="hover:text-white text-sm transition-colors">শার্ট</Link></li>
-                  <li><Link href="#" className="hover:text-white text-sm transition-colors">স্টিকার</Link></li>
-                  <li><Link href="#" className="hover:text-white text-sm transition-colors">এক্সেসরিজ</Link></li>
+                  <li><Link href="#" className="hover:text-white text-sm transition-colors">All</Link></li>
+                  <li><Link href="#" className="hover:text-white text-sm transition-colors">Portfolio</Link></li>
+                  <li><Link href="#" className="hover:text-white text-sm transition-colors">E-commerce</Link></li>
+                  <li><Link href="#" className="hover:text-white text-sm transition-colors">Landing Pages</Link></li>
                 </ul>
               </div>
               <div>
-                <h3 className="font-semibold text-white mb-4">সম্পর্কে</h3>
+                <h3 className="font-semibold text-white mb-4">About</h3>
                 <ul className="space-y-3">
                   {footerLinks.slice(1).map((link) => (
                     <li key={link.name}>
@@ -52,19 +52,19 @@ const Footer = () => {
                 </ul>
               </div>
               <div>
-                <h3 className="font-semibold text-white mb-4">সামাজিক</h3>
+                <h3 className="font-semibold text-white mb-4">Social</h3>
                  <ul className="space-y-3">
-                  <li><a href="#" className="hover:text-white text-sm transition-colors">এক্স / টুইটার</a></li>
-                  <li><a href="#" className="hover:text-white text-sm transition-colors">ইন্সটাগ্রাম</a></li>
-                  <li><a href="#" className="hover:text-white text-sm transition-colors">ফেসবুক</a></li>
+                  <li><a href="#" className="hover:text-white text-sm transition-colors">X / Twitter</a></li>
+                  <li><a href="#" className="hover:text-white text-sm transition-colors">Instagram</a></li>
+                  <li><a href="#" className="hover:text-white text-sm transition-colors">Facebook</a></li>
                 </ul>
               </div>
             </div>
         </div>
 
         <div className="mt-12 pt-8 border-t border-neutral-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-neutral-500">
-          <p>&copy; {year || '...'} এ্যাকমি, Inc. সর্বস্বত্ব সংরক্ষিত।</p>
-          <p>ক্যালিফোর্নিয়ায় ডিজাইন করা হয়েছে।</p>
+          <p>&copy; {year || '...'} FrostFoe, Inc. All rights reserved.</p>
+          <p>Designed in California.</p>
         </div>
       </div>
     </footer>

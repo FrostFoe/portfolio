@@ -38,22 +38,22 @@ export default function Hero() {
         <motion.h1
           variants={itemVariants}
           className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter uppercase"
-          style={{ textShadow: '0 0 25px hsla(212, 96% 47%, 0.7)' }}
+          style={{ textShadow: '0 0 25px hsla(217.2, 91.2%, 59.8%, 0.7)' }}
         >
-          স্টাইলের এক নতুন যুগ
+          Stunning Web Templates
         </motion.h1>
         <motion.p
           variants={itemVariants}
           className="mt-6 max-w-xl sm:max-w-2xl mx-auto text-base sm:text-lg text-gray-300 backdrop-blur-sm p-4 rounded-xl"
         >
-          আমাদের যুগান্তকারী 3D-অনুপ্রাণিত সংগ্রহের সাথে ফ্যাশনের ভবিষ্যৎ অন্বেষণ করুন। অতুলনীয় ভিজ্যুয়াল গভীরতা এবং গতির সাথে আপনার স্টাইল প্রকাশ করুন।
+          Elevate your online presence with professionally designed, fully responsive templates built with the latest web technologies.
         </motion.p>
         <motion.div variants={itemVariants} className="mt-8 flex justify-center gap-4">
           <Button size="lg" className="bg-primary hover:bg-primary/90 text-base font-medium py-6 px-8 rounded-full shadow-lg shadow-primary/50 transform hover:scale-105 transition-transform duration-300">
-            সংগ্রহ দেখুন
+            Browse Templates
           </Button>
           <Button size="lg" variant="outline" className="text-base font-medium py-6 px-8 rounded-full border-2 border-white bg-transparent hover:bg-white hover:text-black transform hover:scale-105 transition-all duration-300">
-            আরও জানুন
+            Learn More
           </Button>
         </motion.div>
       </motion.div>
