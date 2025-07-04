@@ -1,3 +1,4 @@
+
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
@@ -9,21 +10,27 @@ import type { Product, PricingOption } from '@/lib/products';
 import { useCart } from '@/hooks/use-cart';
 import { useToast } from '@/hooks/use-toast';
 
-export default function ProductDetails({ product }: { product: Product | null }) {
+export default function ProductDetails({ product }: { product: Product }) {
   const { addToCart } = useCart();
   const { toast } = useToast();
 
-  if (!product) {
-    return <div>Loading product...</div>;
-  }
-
   const hasPricingOptions = Array.isArray(product.pricingOptions) && product.pricingOptions.length > 0;
-  
-  const defaultPricingOption: PricingOption | null = product ? { name: 'Standard License', price: product.price } : null;
 
-  const [selectedOption, setSelectedOption] = useState<PricingOption | null>(
-    hasPricingOptions ? product.pricingOptions[0] : defaultPricingOption
-  );
+  // This function safely determines the initial selected option
+  const getInitialOption = (): PricingOption | null => {
+    if (hasPricingOptions) {
+      // If there are pricing options, use the first one as default
+      return product.pricingOptions[0];
+    }
+    // Otherwise, if there is a base price, create a default option for it
+    if (typeof product.price !== 'undefined' && product.price !== null) {
+      return { name: 'Standard License', price: product.price };
+    }
+    // If no price is available at all (which validation should prevent), return null
+    return null;
+  };
+  
+  const [selectedOption, setSelectedOption] = useState<PricingOption | null>(getInitialOption());
 
   const handleAddToCart = () => {
     if (product && selectedOption) {
@@ -105,7 +112,7 @@ export default function ProductDetails({ product }: { product: Product | null })
               size="lg"
               className="bg-primary hover:bg-primary/90 w-full text-base font-medium py-6 rounded-lg shadow-lg shadow-primary/30 hover:scale-105 transition-transform"
               onClick={handleAddToCart}
-              disabled={hasPricingOptions && !selectedOption}
+              disabled={!selectedOption}
             >
               <Plus className="mr-2 h-5 w-5" />
               কার্টে যোগ করুন

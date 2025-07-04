@@ -1,3 +1,4 @@
+
 import { getProductData, getProducts } from '@/lib/products';
 import { notFound } from 'next/navigation';
 import Navbar from '@/components/Navbar';
@@ -6,14 +7,14 @@ import RelatedProducts from '@/components/RelatedProducts';
 import ProductDetails from './ProductDetails';
 import ProductGallery from '@/components/ProductGallery';
 
-export default function ProductPage({ params }: { params: { id:string } }) {
-  const product = getProductData(params.id);
+export default async function ProductPage({ params }: { params: { id:string } }) {
+  const product = await getProductData(params.id);
 
   if (!product) {
     notFound();
   }
 
-  const allProducts = getProducts();
+  const allProducts = await getProducts();
   const relatedProducts = allProducts.filter((p) => p.id !== params.id);
 
   return (

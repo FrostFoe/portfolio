@@ -1,3 +1,4 @@
+
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -24,7 +25,7 @@ export type Product = {
   [key: string]: any;
 };
 
-export function getProducts(): Product[] {
+export async function getProducts(): Promise<Product[]> {
   if (!fs.existsSync(productsDirectory)) {
     return [];
   }
@@ -47,18 +48,40 @@ export function getProducts(): Product[] {
       id,
       ...data,
     } as Product;
-  }).filter((product): product is Product => product !== null && product.published === true);
+  }).filter((product): product is Product => {
+      if (!product || product.published !== true) return false;
+      if (!product.title || !product.imageSrc) return false;
+      
+      const hasPrice = typeof product.price !== 'undefined';
+      const hasPricingOptions = Array.isArray(product.pricingOptions) && product.pricingOptions.length > 0;
+      
+      return hasPrice || hasPricingOptions;
+  });
 
   return allProductsData;
 }
 
-export function getProductData(id: string): Product | null {
+export async function getProductData(id: string): Promise<Product | null> {
   const fullPath = path.join(productsDirectory, `${id}.mdx`);
   
   try {
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
   
+    // Validate that essential data exists to prevent render errors
+    if (!data.title || !data.imageSrc || !Array.isArray(data.images) || data.images.length === 0) {
+      console.error(`Validation failed: Product with id '${id}' is missing essential data.`);
+      return null;
+    }
+
+    const hasPrice = typeof data.price !== 'undefined' && data.price !== null;
+    const hasPricingOptions = Array.isArray(data.pricingOptions) && data.pricingOptions.length > 0;
+
+    if (!hasPrice && !hasPricingOptions) {
+        console.error(`Validation failed: Product with id '${id}' is missing price information.`);
+        return null;
+    }
+
     return {
       id,
       ...data,

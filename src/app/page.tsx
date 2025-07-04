@@ -1,11 +1,12 @@
+
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import AnimatedProductGrid from "@/components/AnimatedProductGrid";
 import Hero from "@/components/Hero";
 import { getProducts } from "@/lib/products";
 
-export default function Home() {
-  const products = getProducts();
+export default async function Home() {
+  const products = await getProducts();
 
   return (
     <div className="flex flex-col min-h-screen">
