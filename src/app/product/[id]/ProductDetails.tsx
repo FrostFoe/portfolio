@@ -31,7 +31,7 @@ export default function ProductDetails({ product }: { product: Product }) {
         ) : (
           <Plus className="mr-2 h-5 w-5" />
         )}
-        {isFree ? 'Get Now' : 'Add To Cart'}
+        {isFree ? 'এখনই নিন' : 'কার্টে যোগ করুন'}
     </Button>
   );
 
@@ -50,13 +50,13 @@ export default function ProductDetails({ product }: { product: Product }) {
         <div>
           <h1 className="text-4xl lg:text-5xl font-bold mb-4">{product.title}</h1>
           <div className="rounded-full bg-primary text-primary-foreground font-semibold text-sm py-2 px-4 w-fit">
-            <span>${product.price} USD</span>
+            <span>৳{product.price} টাকা</span>
           </div>
         </div>
 
         <div className="flex flex-col gap-4">
           <div>
-            <h2 className="text-sm font-medium tracking-wide text-gray-400 mb-3">COLOR</h2>
+            <h2 className="text-sm font-medium tracking-wide text-gray-400 mb-3">রঙ</h2>
             <div className="flex gap-2">
               {product.colors.map((color) => (
                 <Button
@@ -78,7 +78,7 @@ export default function ProductDetails({ product }: { product: Product }) {
           </div>
 
           <div>
-            <h2 className="text-sm font-medium tracking-wide text-gray-400 mb-3">SIZE</h2>
+            <h2 className="text-sm font-medium tracking-wide text-gray-400 mb-3">সাইজ</h2>
             <div className="flex flex-wrap gap-2">
               {product.sizes.map((size) => (
                 <Button

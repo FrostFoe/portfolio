@@ -6,7 +6,7 @@ import type { Product } from "@/lib/products";
 export default function RelatedProducts({ products }: { products: Product[] }) {
   return (
     <div className="w-full max-w-7xl mx-auto px-6 mb-20">
-      <h2 className="text-2xl font-bold mb-6">Related Products</h2>
+      <h2 className="text-2xl font-bold mb-6">সম্পর্কিত পণ্য</h2>
       <Carousel opts={{ align: "start", loop: false }}>
         <CarouselContent className="-ml-4">
           {products.map((product) => (

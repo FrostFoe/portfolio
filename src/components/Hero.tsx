@@ -40,21 +40,20 @@ export default function Hero() {
           className="text-6xl md:text-8xl font-black tracking-tighter uppercase"
           style={{ textShadow: '0 0 25px hsla(212, 96% 47%, 0.7)' }}
         >
-          A New Era of Style
+          স্টাইলের এক নতুন যুগ
         </motion.h1>
         <motion.p
           variants={itemVariants}
           className="mt-6 max-w-2xl mx-auto text-lg text-gray-300 backdrop-blur-sm p-4 rounded-xl"
         >
-          Explore the future of fashion with our groundbreaking 3D-inspired collection.
-          Unleash your style with unparalleled visual depth and motion.
+          আমাদের যুগান্তকারী 3D-অনুপ্রাণিত সংগ্রহের সাথে ফ্যাশনের ভবিষ্যৎ অন্বেষণ করুন। অতুলনীয় ভিজ্যুয়াল গভীরতা এবং গতির সাথে আপনার স্টাইল প্রকাশ করুন।
         </motion.p>
         <motion.div variants={itemVariants} className="mt-8 flex justify-center gap-4">
           <Button size="lg" className="bg-primary hover:bg-primary/90 text-base font-medium py-6 px-8 rounded-full shadow-lg shadow-primary/50 transform hover:scale-105 transition-transform duration-300">
-            Explore Collection
+            সংগ্রহ দেখুন
           </Button>
           <Button size="lg" variant="outline" className="text-base font-medium py-6 px-8 rounded-full border-2 border-white bg-transparent hover:bg-white hover:text-black transform hover:scale-105 transition-all duration-300">
-            Learn More
+            আরও জানুন
           </Button>
         </motion.div>
       </motion.div>

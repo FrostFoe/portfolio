@@ -5,7 +5,7 @@ import { Search, ShoppingCart } from "lucide-react";
 import Logo from "./Logo";
 
 const Navbar = () => {
-  const navLinks = ["All", "Shirts", "Stickers"];
+  const navLinks = ["সব", "শার্ট", "স্টিকার"];
 
   return (
     <header className="fixed top-0 w-full backdrop-blur-lg z-50 h-16 border-b border-neutral-800">
@@ -13,7 +13,7 @@ const Navbar = () => {
         <div className="flex items-center gap-6">
           <Link href="/" aria-label="Go to homepage" className="flex items-center gap-2.5">
             <Logo />
-            <span className="font-semibold text-white hidden sm:block">ACME</span>
+            <span className="font-semibold text-white hidden sm:block">এ্যাকমি</span>
           </Link>
           <nav className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
@@ -32,7 +32,7 @@ const Navbar = () => {
           <div className="hidden md:block relative w-64">
             <input
               type="search"
-              placeholder="Search for products..."
+              placeholder="পণ্য খুঁজুন..."
               className="bg-neutral-900 border-neutral-800 text-gray-300 placeholder-gray-500 rounded-md py-2 pl-4 pr-10 w-full focus:outline-none focus:ring-1 focus:ring-primary transition-all text-sm"
             />
             <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
