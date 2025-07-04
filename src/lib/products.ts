@@ -23,18 +23,30 @@ export type Product = {
   [key: string]: any;
 };
 
+const productFileNames = [
+  'landing-page.mdx',
+  'portfolio-starter.mdx',
+  'ecommerce-kit.mdx',
+];
+
 export function getProducts(): Product[] {
-  const fileNames = fs.readdirSync(productsDirectory);
-  const allProductsData = fileNames.map((fileName) => {
+  const allProductsData = productFileNames.map((fileName) => {
     const id = fileName.replace(/\.mdx$/, '');
     const fullPath = path.join(productsDirectory, fileName);
+    
+    if (!fs.existsSync(fullPath)) {
+      return null;
+    }
+    
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data } = matter(fileContents);
+    
     return {
       id,
       ...data,
     } as Product;
-  });
+  }).filter((product): product is Product => product !== null);
+
   return allProductsData;
 }
 
