@@ -6,7 +6,7 @@ import RelatedProducts from '@/components/RelatedProducts';
 import ProductDetails from './ProductDetails';
 import ProductGallery from '@/components/ProductGallery';
 
-export default function ProductPage({ params }: { params: { id: string } }) {
+export default function ProductPage({ params }: { params: { id:string } }) {
   const product = getProductData(params.id);
 
   if (!product) {
@@ -20,7 +20,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-grow pt-24">
-        <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-10">
+        <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-10 items-start">
             <ProductGallery images={product.images} />
             <ProductDetails product={product} />
         </div>
