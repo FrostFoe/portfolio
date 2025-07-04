@@ -1,25 +1,26 @@
 "use client";
 
 import Link from "next/link";
-import { Search, ShoppingBag } from "lucide-react";
+import { Search, ShoppingCart } from "lucide-react";
 import Logo from "./Logo";
 
 const Navbar = () => {
   const navLinks = ["All", "Shirts", "Stickers"];
 
   return (
-    <header className="fixed top-0 w-full bg-black z-50 shadow-sm h-16">
+    <header className="fixed top-0 w-full bg-black z-50 h-16">
       <div className="flex items-center justify-between h-full max-w-7xl mx-auto px-6">
-        <div className="flex items-center">
-          <Link href="/" aria-label="Go to homepage">
+        <div className="flex items-center gap-6">
+          <Link href="/" aria-label="Go to homepage" className="flex items-center gap-2.5">
             <Logo />
+            <span className="font-semibold text-white hidden sm:block">ACME STORE</span>
           </Link>
-          <nav className="hidden lg:flex items-center ml-6 space-x-4">
+          <nav className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
               <Link
                 key={link}
                 href={`/#${link.toLowerCase()}`}
-                className="text-gray-200 hover:text-white hover:underline font-medium text-sm"
+                className="text-gray-400 hover:text-white transition-colors text-sm"
               >
                 {link}
               </Link>
@@ -27,22 +28,20 @@ const Navbar = () => {
           </nav>
         </div>
 
-        <div className="hidden md:block">
-          <div className="relative">
+        <div className="flex items-center gap-4">
+          <div className="hidden md:block relative w-64">
             <input
-              type="text"
-              placeholder="Search for products…"
-              className="bg-gray-800 text-gray-200 placeholder-gray-500 rounded-lg py-2 pl-4 pr-10 w-64 focus:outline-none focus:ring-2 focus:ring-primary"
+              type="search"
+              placeholder="Search for products..."
+              className="bg-transparent border border-neutral-800 text-gray-300 placeholder-gray-500 rounded-lg py-1.5 pl-4 pr-10 w-full focus:outline-none focus:ring-1 focus:ring-primary transition-all text-sm"
             />
             <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-              <Search className="h-5 w-5 text-gray-400" />
+              <Search className="h-4 w-4 text-gray-500" />
             </div>
           </div>
-        </div>
 
-        <div className="flex items-center">
           <button aria-label="Open cart">
-            <ShoppingBag className="h-6 w-6 text-gray-200 hover:text-white" />
+            <ShoppingCart className="h-6 w-6 text-gray-400 hover:text-white transition-colors" />
           </button>
         </div>
       </div>
