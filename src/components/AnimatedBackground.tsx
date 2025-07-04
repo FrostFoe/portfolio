@@ -20,7 +20,7 @@ function Starfield() {
       ref={starsRef}
       radius={150}
       depth={50}
-      count={7000}
+      count={5000}
       factor={5}
       saturation={0}
       fade // For appearing/disappearing effect
