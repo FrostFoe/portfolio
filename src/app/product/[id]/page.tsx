@@ -1,11 +1,12 @@
 'use client';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ProductGallery from '@/components/ProductGallery';
 import RelatedProducts from '@/components/RelatedProducts';
 import { Button } from '@/components/ui/button';
-import { Plus } from 'lucide-react';
+import { PlusIcon } from '@heroicons/react/24/solid';
 import { cn } from '@/lib/utils';
 
 // This is mock data. In a real application, you would fetch this based on the `params.id`.
@@ -27,15 +28,33 @@ export default function ProductPage({ params }: { params: { id: string } }) {
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [selectedSize, setSelectedSize] = useState(product.sizes[1]);
 
+  const mainVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { type: 'spring' } },
+  };
+
+
   return (
     <div className="flex flex-col min-h-screen bg-black text-white">
       <Navbar />
       <main className="flex-grow pt-16">
         <div className="max-w-7xl mx-auto px-6 py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-10 items-start">
-            <ProductGallery images={product.images} />
-
-            <div className="flex flex-col gap-8">
+          <motion.div 
+            className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-10 items-start"
+            variants={mainVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.div variants={itemVariants}>
+              <ProductGallery images={product.images} />
+            </motion.div>
+            
+            <motion.div className="flex flex-col gap-8" variants={itemVariants}>
               <div>
                 <h1 className="text-4xl lg:text-5xl font-bold mb-4">{product.name}</h1>
                 <div className="rounded-full bg-primary text-primary-foreground font-semibold text-sm py-2 px-4 w-fit">
@@ -92,10 +111,10 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               <p className="text-gray-400 leading-relaxed text-sm">{product.description}</p>
 
               <Button size="lg" className="bg-primary hover:bg-primary/90 w-full text-base font-medium py-6">
-                  <Plus className="mr-2 h-5 w-5" /> Add To Cart
+                  <PlusIcon className="mr-2 h-5 w-5" /> Add To Cart
               </Button>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
 
         <RelatedProducts />

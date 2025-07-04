@@ -3,50 +3,59 @@ import Link from "next/link";
 
 const Footer = () => {
   const footerLinks = [
-    "Home",
-    "About",
-    "Terms & Conditions",
-    "Shipping & Return Policy",
-    "Privacy Policy",
-    "FAQ",
+    { name: "Home", href: "/" },
+    { name: "About", href: "#" },
+    { name: "Terms & Conditions", href: "#" },
+    { name: "Privacy Policy", href: "#" },
   ];
 
   return (
-    <footer className="bg-neutral-900 text-gray-400 mt-auto">
+    <footer className="bg-black border-t border-neutral-800 text-gray-400 mt-auto">
       <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-1">
-                 <Link href="/" aria-label="Homepage" className="flex items-center gap-2 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="flex flex-col items-start gap-4">
+                 <Link href="/" aria-label="Homepage" className="flex items-center gap-2">
                     <Logo />
-                    <span className="font-semibold text-white">ACME STORE</span>
+                    <span className="font-semibold text-white text-lg">ACME</span>
                 </Link>
-                <nav>
-                    <ul className="space-y-3">
-                    {footerLinks.map((name) => (
-                        <li key={name}>
-                        <Link href="#" className="block hover:text-white text-sm transition-colors">
-                            {name}
-                        </Link>
-                        </li>
-                    ))}
-                    </ul>
-                </nav>
+                <p className="text-sm text-neutral-500">A new era of style.</p>
             </div>
-            <div className="lg:col-span-2 flex lg:justify-end items-start">
-                <a href="#" target="_blank" rel="noopener noreferrer" className="border border-gray-700 bg-black text-white px-4 py-2 rounded-md font-medium text-sm flex items-center gap-2 hover:bg-neutral-800 transition-colors h-fit">
-                    <svg height="14" viewBox="0 0 75 65" fill="white"><path d="M37.59.25l36.95 64H.64l36.95-64z"></path></svg>
-                    <span>Deploy</span>
-                </a>
+            <div className="md:col-span-2 grid grid-cols-2 md:grid-cols-4 gap-8">
+              <div>
+                <h3 className="font-semibold text-white mb-4">Shop</h3>
+                <ul className="space-y-3">
+                  <li><Link href="#" className="hover:text-white text-sm transition-colors">All</Link></li>
+                  <li><Link href="#" className="hover:text-white text-sm transition-colors">Shirts</Link></li>
+                  <li><Link href="#" className="hover:text-white text-sm transition-colors">Stickers</Link></li>
+                  <li><Link href="#" className="hover:text-white text-sm transition-colors">Accessories</Link></li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="font-semibold text-white mb-4">About</h3>
+                <ul className="space-y-3">
+                  {footerLinks.slice(1).map((link) => (
+                    <li key={link.name}>
+                      <Link href={link.href} className="block hover:text-white text-sm transition-colors">
+                        {link.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3 className="font-semibold text-white mb-4">Social</h3>
+                 <ul className="space-y-3">
+                  <li><a href="#" className="hover:text-white text-sm transition-colors">X / Twitter</a></li>
+                  <li><a href="#" className="hover:text-white text-sm transition-colors">Instagram</a></li>
+                  <li><a href="#" className="hover:text-white text-sm transition-colors">Facebook</a></li>
+                </ul>
+              </div>
             </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-neutral-800 flex flex-wrap-reverse md:flex-nowrap justify-between items-center gap-6 text-sm">
-          <div className="flex items-center gap-x-4 gap-y-2 flex-wrap text-gray-500">
-            <p>&copy; 2023-2025 ACME, Inc. All rights reserved.</p>
-            <div className="h-4 w-px bg-neutral-700 hidden sm:block"></div>
-            <Link href="#" className="hover:text-white transition-colors">View the source</Link>
-          </div>
-          <p className="text-gray-500">Created by <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">▲ Vercel</a></p>
+        <div className="mt-12 pt-8 border-t border-neutral-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-neutral-500">
+          <p>&copy; {new Date().getFullYear()} ACME, Inc. All rights reserved.</p>
+          <p>Designed in California.</p>
         </div>
       </div>
     </footer>

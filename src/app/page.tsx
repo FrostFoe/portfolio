@@ -1,7 +1,7 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import ProductCard from "@/components/ProductCard";
-import ProductCarouselNav from "@/components/ProductCarouselNav";
+import Hero from "@/components/Hero";
+import AnimatedProductGrid from "@/components/AnimatedProductGrid";
 
 export default function Home() {
   const products = [
@@ -54,22 +54,10 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-black">
       <Navbar />
       <main className="flex-grow pt-16">
-        <div className="mt-8 mb-12 px-6 max-w-7xl mx-auto">
-          <div className="grid auto-rows-[25rem] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {products.map((product) => (
-              <ProductCard
-                key={product.id}
-                id={product.id}
-                imageSrc={product.imageSrc}
-                title={product.title}
-                price={product.price}
-                imageHint={product.imageHint}
-                className={product.className}
-              />
-            ))}
-          </div>
+        <Hero />
+        <div className="py-12 px-6 max-w-7xl mx-auto">
+          <AnimatedProductGrid products={products} />
         </div>
-        <ProductCarouselNav />
       </main>
       <Footer />
     </div>
