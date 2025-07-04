@@ -18,7 +18,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="flex-grow pt-16">
+      <main className="flex-grow pt-24">
         <div className="max-w-7xl mx-auto px-6 py-20">
           <ProductDetails product={product} />
         </div>

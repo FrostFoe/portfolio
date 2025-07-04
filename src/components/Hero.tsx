@@ -37,7 +37,7 @@ export default function Hero() {
       >
         <motion.h1
           variants={itemVariants}
-          className="text-6xl md:text-8xl font-black tracking-tighter uppercase"
+          className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tighter uppercase"
           style={{ textShadow: '0 0 25px hsla(212, 96% 47%, 0.7)' }}
         >
           স্টাইলের এক নতুন যুগ

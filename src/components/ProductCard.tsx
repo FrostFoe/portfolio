@@ -26,14 +26,16 @@ const ProductCard = ({
     >
       <Link href={`/product/${id}`} className="group h-full block">
         <article className="relative w-full h-full overflow-hidden rounded-2xl border border-neutral-800 group-hover:border-primary/80 transition-colors duration-300 shadow-lg group-hover:shadow-2xl group-hover:shadow-primary/30">
-          <Image
-            src={imageSrc}
-            alt={title}
-            width={800}
-            height={800}
-            className="w-full h-full object-cover object-center transition-transform duration-300 ease-in-out group-hover:scale-105"
-            data-ai-hint={imageHint}
-          />
+          <div className="aspect-square w-full bg-neutral-900">
+            <Image
+              src={imageSrc}
+              alt={title}
+              width={800}
+              height={800}
+              className="w-full h-full object-cover object-center transition-transform duration-300 ease-in-out group-hover:scale-105"
+              data-ai-hint={imageHint}
+            />
+          </div>
           <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
             <div className="flex items-end justify-between">
               <div>
