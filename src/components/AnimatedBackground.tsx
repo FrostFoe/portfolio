@@ -3,10 +3,10 @@
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Stars } from '@react-three/drei';
 import { useRef } from 'react';
-import type * as THREE from 'three';
+import { Points, BufferGeometry, NormalBufferAttributes } from 'three';
 
 function Starfield() {
-  const starsRef = useRef<THREE.Group>(null!);
+  const starsRef = useRef<Points<BufferGeometry<NormalBufferAttributes>>>(null!);
 
   useFrame((_state, delta) => {
     if (starsRef.current) {
