@@ -20,6 +20,7 @@ export type Product = {
   pricingOptions: PricingOption[];
   content: string;
   ctaUrl?: string;
+  published?: boolean;
   [key: string]: any;
 };
 
@@ -46,7 +47,7 @@ export function getProducts(): Product[] {
       id,
       ...data,
     } as Product;
-  }).filter((product): product is Product => product !== null);
+  }).filter((product): product is Product => product !== null && product.published === true);
 
   return allProductsData;
 }
