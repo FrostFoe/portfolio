@@ -40,7 +40,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
 
   return (
-    <div className="flex flex-col min-h-screen bg-black text-white">
+    <div className="flex flex-col min-h-screen text-white">
       <Navbar />
       <main className="flex-grow pt-16">
         <div className="max-w-7xl mx-auto px-6 py-20">

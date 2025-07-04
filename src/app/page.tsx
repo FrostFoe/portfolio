@@ -1,7 +1,7 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import AnimatedProductGrid from "@/components/AnimatedProductGrid";
-import HeroClient from "@/components/HeroClient";
+import Hero from "@/components/Hero";
 
 export default function Home() {
   const products = [
@@ -51,20 +51,22 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen bg-black">
+    <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-grow">
-        <HeroClient />
-        <div className="py-24 px-6 max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white bg-clip-text text-transparent bg-gradient-to-r from-gray-200 to-gray-500">
-              Our Collection
-            </h2>
-            <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-400">
-              Each piece is crafted with the future in mind.
-            </p>
+        <Hero />
+        <div className="bg-black">
+          <div className="py-24 px-6 max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white bg-clip-text text-transparent bg-gradient-to-r from-gray-200 to-gray-500">
+                Our Collection
+              </h2>
+              <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-400">
+                Each piece is crafted with the future in mind.
+              </p>
+            </div>
+            <AnimatedProductGrid products={products} />
           </div>
-          <AnimatedProductGrid products={products} />
         </div>
       </main>
       <Footer />

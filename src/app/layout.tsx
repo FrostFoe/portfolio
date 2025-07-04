@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
+import AnimatedBackground from "@/components/AnimatedBackground";
 import "./globals.css";
 
 const inter = Inter({
@@ -21,7 +22,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`dark ${inter.variable}`}>
       <body className="bg-background text-foreground font-body antialiased">
-        {children}
+        <AnimatedBackground />
+        <div className="relative z-0">
+          {children}
+        </div>
         <Toaster />
       </body>
     </html>
