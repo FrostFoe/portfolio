@@ -8,11 +8,6 @@ export default {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        body: ['bensenhandwriting', 'sans-serif'],
-        headline: ['bensenhandwriting', 'sans-serif'],
-        code: ['monospace'],
-      },
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
