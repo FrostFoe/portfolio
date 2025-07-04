@@ -21,34 +21,50 @@ const ProductCard = ({
   return (
     <motion.div
       className="h-full"
-      whileHover={{ y: -8 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      whileHover="hover"
+      initial="initial"
+      animate="initial"
+      style={{ perspective: 1000 }}
     >
       <Link
         href={`/product/${id}`}
         className="group h-full block"
       >
-        <article 
-          className="relative w-full h-full overflow-hidden rounded-lg border border-neutral-800 bg-black group-hover:border-primary/80 transition-colors duration-300 shadow-lg hover:shadow-primary/20"
+        <motion.article 
+          className="relative w-full h-full overflow-hidden rounded-2xl border border-neutral-800 bg-black group-hover:border-primary/80 transition-colors duration-300 shadow-2xl hover:shadow-primary/30"
+          variants={{
+            initial: { transform: 'rotateY(0deg) rotateX(0deg)', scale: 1 },
+            hover: { 
+              transform: 'rotateY(10deg) rotateX(5deg) translateZ(20px)', 
+              scale: 1.05,
+              transition: { type: 'spring', stiffness: 300, damping: 20 }
+            },
+          }}
+          style={{ transformStyle: 'preserve-3d' }}
           >
-          <Image
-            src={imageSrc}
-            alt={title}
-            width={800}
-            height={800}
-            className="w-full h-full object-cover object-center transition-transform duration-300 ease-in-out group-hover:scale-105"
-            data-ai-hint={imageHint}
-            priority
-          />
-          <div className="absolute bottom-4 left-4 flex items-center gap-2">
-            <div className="rounded-full border border-white/10 bg-black/60 backdrop-blur-md py-1.5 px-4">
-              <h3 className="text-white font-medium text-sm">{title}</h3>
+            <div style={{ transform: 'translateZ(40px)' }}>
+                 <Image
+                    src={imageSrc}
+                    alt={title}
+                    width={800}
+                    height={800}
+                    className="w-full h-full object-cover object-center transition-transform duration-300 ease-in-out group-hover:scale-110"
+                    data-ai-hint={imageHint}
+                    priority
+                />
             </div>
-            <div className="rounded-full bg-primary text-primary-foreground font-bold text-sm py-1.5 px-4">
-              <span>${price} USD</span>
-            </div>
+         
+          <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 via-black/60 to-transparent" style={{ transform: 'translateZ(50px)' }}>
+             <div className="flex items-end justify-between">
+                <div>
+                  <h3 className="text-white font-bold text-lg drop-shadow-lg">{title}</h3>
+                </div>
+                <div className="rounded-full bg-primary text-primary-foreground font-bold text-sm py-2 px-5 shadow-lg">
+                  <span>${price}</span>
+                </div>
+              </div>
           </div>
-        </article>
+        </motion.article>
       </Link>
     </motion.div>
   );
