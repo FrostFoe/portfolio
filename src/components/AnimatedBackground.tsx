@@ -3,41 +3,37 @@
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Stars } from '@react-three/drei';
 import { useRef } from 'react';
-import * as THREE from 'three';
+import type * as THREE from 'three';
 
-function RotatingPyramid() {
-  const meshRef = useRef<THREE.Mesh>(null!);
+function Starfield() {
+  const starsRef = useRef<THREE.Group>(null!);
 
-  useFrame((state, delta) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.y += delta * 0.3;
-      meshRef.current.rotation.x += delta * 0.1;
+  useFrame((_state, delta) => {
+    if (starsRef.current) {
+      // Add a slow, constant rotation
+      starsRef.current.rotation.y += delta * 0.03;
     }
   });
 
   return (
-    <mesh ref={meshRef} scale={2.5}>
-      <coneGeometry args={[1, 1.5, 4]} />
-      <meshStandardMaterial 
-        color={'#ffffff'} 
-        emissive={'hsl(212 96% 47%)'}
-        emissiveIntensity={0.4}
-        metalness={0.9} 
-        roughness={0.1}
-      />
-    </mesh>
+    <Stars
+      ref={starsRef}
+      radius={150}
+      depth={50}
+      count={7000}
+      factor={5}
+      saturation={0}
+      fade // For appearing/disappearing effect
+      speed={1.5} // Controls the twinkling speed
+    />
   );
 }
 
 export default function AnimatedBackground() {
   return (
-    <div className="fixed top-0 left-0 w-full h-full -z-10">
-      <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
-        <color attach="background" args={['black']} />
-        <ambientLight intensity={0.5} />
-        <pointLight position={[10, 10, 10]} intensity={2} />
-        <Stars radius={150} depth={50} count={7000} factor={5} saturation={0} fade speed={1.5} />
-        <RotatingPyramid />
+    <div className="fixed top-0 left-0 w-full h-full -z-10 bg-black">
+      <Canvas camera={{ position: [0, 0, 1], fov: 75 }}>
+        <Starfield />
       </Canvas>
     </div>
   );
