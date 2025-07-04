@@ -15,6 +15,7 @@ export type Product = {
   colors: string[];
   sizes: string[];
   content: string;
+  ctaUrl?: string;
   [key: string]: any;
 };
 
