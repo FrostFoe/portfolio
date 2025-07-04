@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import ProductGallery from '@/components/ProductGallery';
 import { Button } from '@/components/ui/button';
-import { PlusIcon } from '@heroicons/react/24/solid';
+import { PlusIcon, ArrowDownTrayIcon } from '@heroicons/react/24/solid';
 import { cn } from '@/lib/utils';
 import type { Product } from '@/lib/products';
 
@@ -20,6 +20,8 @@ export default function ProductDetails({ product }: { product: Product }) {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { type: 'spring' } },
   };
+
+  const isFree = product.price === '0.00';
 
 
   return (
@@ -90,7 +92,12 @@ export default function ProductDetails({ product }: { product: Product }) {
         <p className="text-gray-400 leading-relaxed text-sm">{product.content}</p>
 
         <Button size="lg" className="bg-primary hover:bg-primary/90 w-full text-base font-medium py-6">
-            <PlusIcon className="mr-2 h-5 w-5" /> Add To Cart
+            {isFree ? (
+              <ArrowDownTrayIcon className="mr-2 h-5 w-5" />
+            ) : (
+              <PlusIcon className="mr-2 h-5 w-5" />
+            )}
+            {isFree ? 'Get Now' : 'Add To Cart'}
         </Button>
       </motion.div>
     </motion.div>
