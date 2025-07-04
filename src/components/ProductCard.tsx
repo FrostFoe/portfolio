@@ -24,7 +24,7 @@ const ProductCard = ({
       href={`/product/${id}`}
       className={cn("group h-full", className)}
     >
-      <article className="relative w-full h-full overflow-hidden rounded-lg border border-neutral-800 bg-black group-hover:border-primary/80 transition-colors duration-300">
+      <article className="relative w-full h-full overflow-hidden rounded-lg border border-transparent bg-black group-hover:border-primary/80 transition-colors duration-300">
         <Image
           src={imageSrc}
           alt={title}

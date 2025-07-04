@@ -55,7 +55,7 @@ export default function Home() {
       <Navbar />
       <main className="flex-grow pt-16">
         <div className="mt-8 mb-12 px-6 max-w-7xl mx-auto">
-          <div className="grid auto-rows-[22rem] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid auto-rows-[25rem] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {products.map((product) => (
               <ProductCard
                 key={product.id}

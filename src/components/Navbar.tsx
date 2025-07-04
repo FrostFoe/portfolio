@@ -33,7 +33,7 @@ const Navbar = () => {
             <input
               type="search"
               placeholder="Search for products..."
-              className="bg-transparent border border-neutral-800 text-gray-300 placeholder-gray-500 rounded-lg py-1.5 pl-4 pr-10 w-full focus:outline-none focus:ring-1 focus:ring-primary transition-all text-sm"
+              className="bg-neutral-900 border-neutral-800 text-gray-300 placeholder-gray-500 rounded-md py-2 pl-4 pr-10 w-full focus:outline-none focus:ring-1 focus:ring-primary transition-all text-sm"
             />
             <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
               <Search className="h-4 w-4 text-gray-500" />
