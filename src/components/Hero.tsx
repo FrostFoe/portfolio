@@ -44,7 +44,7 @@ export default function Hero() {
         </motion.h1>
         <motion.p
           variants={itemVariants}
-          className="mt-6 max-w-2xl mx-auto text-lg text-gray-300 backdrop-blur-sm bg-black/20 p-4 rounded-xl"
+          className="mt-6 max-w-2xl mx-auto text-lg text-gray-300 backdrop-blur-sm p-4 rounded-xl"
         >
           Explore the future of fashion with our groundbreaking 3D-inspired collection.
           Unleash your style with unparalleled visual depth and motion.

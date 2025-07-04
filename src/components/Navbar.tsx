@@ -8,7 +8,7 @@ const Navbar = () => {
   const navLinks = ["All", "Shirts", "Stickers"];
 
   return (
-    <header className="fixed top-0 w-full bg-black/50 backdrop-blur-lg z-50 h-16 border-b border-neutral-800">
+    <header className="fixed top-0 w-full backdrop-blur-lg z-50 h-16 border-b border-neutral-800">
       <div className="flex items-center justify-between h-full max-w-7xl mx-auto px-6">
         <div className="flex items-center gap-6">
           <Link href="/" aria-label="Go to homepage" className="flex items-center gap-2.5">

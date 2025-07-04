@@ -31,7 +31,7 @@ const ProductCard = ({
         className="group h-full block"
       >
         <motion.article 
-          className="relative w-full h-full overflow-hidden rounded-2xl border border-neutral-800 bg-black group-hover:border-primary/80 transition-colors duration-300 shadow-2xl hover:shadow-primary/30"
+          className="relative w-full h-full overflow-hidden rounded-2xl border border-neutral-800 group-hover:border-primary/80 transition-colors duration-300 shadow-2xl hover:shadow-primary/30"
           variants={{
             initial: { transform: 'rotateY(0deg) rotateX(0deg)', scale: 1 },
             hover: { 
@@ -53,7 +53,7 @@ const ProductCard = ({
                 />
             </div>
          
-          <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 via-black/60 to-transparent" style={{ transform: 'translateZ(50px)' }}>
+          <div className="absolute bottom-0 left-0 right-0 p-6" style={{ transform: 'translateZ(50px)' }}>
              <div className="flex items-end justify-between">
                 <div>
                   <h3 className="text-white font-bold text-lg drop-shadow-lg">{title}</h3>

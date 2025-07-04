@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`dark ${inter.variable}`}>
-      <body className="bg-background text-foreground font-body antialiased">
+      <body className="text-foreground font-body antialiased">
         <AnimatedBackground />
         <div className="relative z-0">
           {children}

@@ -55,7 +55,7 @@ export default function Home() {
       <Navbar />
       <main className="flex-grow">
         <Hero />
-        <div className="bg-black">
+        <div>
           <div className="py-24 px-6 max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white bg-clip-text text-transparent bg-gradient-to-r from-gray-200 to-gray-500">

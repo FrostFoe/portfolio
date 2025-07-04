@@ -40,7 +40,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
 
   return (
-    <div className="flex flex-col min-h-screen text-white">
+    <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-grow pt-16">
         <div className="max-w-7xl mx-auto px-6 py-20">
@@ -73,7 +73,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                         onClick={() => setSelectedColor(color)}
                         className={cn(
                           'px-4 py-2 rounded-full text-sm font-normal h-auto',
-                          'bg-neutral-900 border-neutral-800 hover:border-white transition-colors',
+                          'border-neutral-800 hover:border-white transition-colors',
                           {
                             'border-white ring-1 ring-white': selectedColor === color,
                           }
@@ -95,7 +95,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                         onClick={() => setSelectedSize(size)}
                         className={cn(
                           'px-4 py-2 rounded-full text-sm font-normal h-auto w-14',
-                          'bg-neutral-900 border-neutral-800 hover:border-white transition-colors',
+                          'border-neutral-800 hover:border-white transition-colors',
                           {
                             'border-white ring-1 ring-white': selectedSize === size,
                           }

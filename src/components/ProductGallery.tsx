@@ -48,7 +48,7 @@ export default function ProductGallery({ images }: ProductGalleryProps) {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="relative aspect-square w-full bg-black rounded-lg border border-neutral-800 overflow-hidden">
+      <div className="relative aspect-square w-full rounded-lg border border-neutral-800 overflow-hidden">
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
             key={activeIndex}
@@ -75,10 +75,10 @@ export default function ProductGallery({ images }: ProductGalleryProps) {
         </AnimatePresence>
         
         <div className="absolute top-1/2 left-4 right-4 flex justify-between -translate-y-1/2">
-            <button onClick={handlePrev} className="p-2 rounded-full bg-black/50 text-white/80 hover:text-white hover:bg-black/75 transition-colors">
+            <button onClick={handlePrev} className="p-2 rounded-full bg-secondary/50 backdrop-blur-sm text-white/80 hover:text-white hover:bg-secondary/75 transition-colors">
                 <ChevronLeftIcon className="h-6 w-6"/>
             </button>
-            <button onClick={handleNext} className="p-2 rounded-full bg-black/50 text-white/80 hover:text-white hover:bg-black/75 transition-colors">
+            <button onClick={handleNext} className="p-2 rounded-full bg-secondary/50 backdrop-blur-sm text-white/80 hover:text-white hover:bg-secondary/75 transition-colors">
                 <ChevronRightIcon className="h-6 w-6"/>
             </button>
         </div>
