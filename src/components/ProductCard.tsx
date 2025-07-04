@@ -50,7 +50,6 @@ const ProductCard = ({
                     height={800}
                     className="w-full h-full object-cover object-center transition-transform duration-300 ease-in-out group-hover:scale-110"
                     data-ai-hint={imageHint}
-                    priority
                 />
             </div>
          
