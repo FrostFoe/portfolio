@@ -31,8 +31,9 @@ function RotatingPyramid() {
 
 export default function AnimatedBackground() {
   return (
-    <div className="fixed top-0 left-0 w-full h-full -z-10 opacity-70">
+    <div className="fixed top-0 left-0 w-full h-full -z-10">
       <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
+        <color attach="background" args={['black']} />
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} intensity={2} />
         <Stars radius={150} depth={50} count={7000} factor={5} saturation={0} fade speed={1.5} />
