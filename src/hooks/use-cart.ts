@@ -96,7 +96,8 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const totalPrice = items.reduce((total, item) => {
-    const price = parseFloat(item.selectedOption.price.replace(/[^\d.]/g, ''));
+    const priceString = item.selectedOption?.price || '0';
+    const price = parseFloat(priceString.replace(/[^\d.]/g, ''));
     return total + (isNaN(price) ? 0 : price * item.quantity);
   }, 0);
 
