@@ -5,23 +5,27 @@ import Link from "next/link";
 import { Search, ShoppingCart, Menu, X } from "lucide-react";
 import Logo from "./Logo";
 import { motion, AnimatePresence } from "framer-motion";
+import { useCart } from "@/hooks/use-cart";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { items } = useCart();
   const navLinks = ["সব", "পোর্টফোলিও", "ই-কমার্স"];
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+  const itemCount = items.reduce((total, item) => total + item.quantity, 0);
+
   return (
     <>
       <header className="fixed top-0 w-full backdrop-blur-lg z-50 h-16 border-b border-neutral-800">
-        <div className="flex items-center justify-between h-full max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-[1fr_auto_1fr] items-center h-full max-w-7xl mx-auto px-6">
           <Link href="/" aria-label="Go to homepage" className="flex items-center gap-2.5" onClick={() => setIsMenuOpen(false)}>
             <Logo />
             <span className="font-semibold text-white hidden sm:block">ফ্রস্টফো</span>
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-6">
+          <nav className="hidden lg:flex items-center gap-6 justify-self-center">
             {navLinks.map((link) => (
               <Link
                 key={link}
@@ -33,7 +37,7 @@ const Navbar = () => {
             ))}
           </nav>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 justify-self-end">
             <div className="hidden lg:block relative w-64">
               <input
                 type="search"
@@ -45,9 +49,14 @@ const Navbar = () => {
               </div>
             </div>
 
-            <button aria-label="Open cart" className="hidden lg:block">
+            <Link href="/cart" aria-label="Open cart" className="hidden lg:block relative">
               <ShoppingCart className="h-6 w-6 text-gray-400 hover:text-white transition-colors" />
-            </button>
+              {itemCount > 0 && (
+                <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+                  {itemCount}
+                </span>
+              )}
+            </Link>
             
             <button
               className="lg:hidden text-white"
@@ -90,10 +99,15 @@ const Navbar = () => {
                    <Search className="h-4 w-4 text-gray-500" />
                  </div>
                </div>
-               <button aria-label="Open cart" className="flex items-center gap-2 text-gray-300 hover:text-white">
+               <Link href="/cart" aria-label="Open cart" className="relative flex items-center gap-2 text-gray-300 hover:text-white" onClick={toggleMenu}>
                  <ShoppingCart className="h-6 w-6" />
                  <span>কার্ট</span>
-               </button>
+                 {itemCount > 0 && (
+                  <span className="absolute -top-2 left-4 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+                    {itemCount}
+                  </span>
+                 )}
+               </Link>
             </div>
           </motion.div>
         )}

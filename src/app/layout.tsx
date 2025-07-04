@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Hind_Siliguri } from "next/font/google";
 import dynamic from 'next/dynamic';
 import { Toaster } from "@/components/ui/toaster";
+import { CartProvider } from "@/hooks/use-cart";
 import "./globals.css";
 
 const AnimatedBackground = dynamic(() => import('@/components/AnimatedBackground'), {
@@ -40,11 +41,13 @@ export default function RootLayout({
   return (
     <html lang="bn" className="dark">
       <body className={`${hindSiliguri.className} text-foreground antialiased`}>
-        <AnimatedBackground />
-        <div className="relative z-0">
-          {children}
-        </div>
-        <Toaster />
+        <CartProvider>
+          <AnimatedBackground />
+          <div className="relative z-0">
+            {children}
+          </div>
+          <Toaster />
+        </CartProvider>
       </body>
     </html>
   );

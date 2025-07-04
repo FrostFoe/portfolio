@@ -6,17 +6,36 @@ import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { Product, PricingOption } from '@/lib/products';
+import { useCart } from '@/hooks/use-cart';
+import { useToast } from '@/hooks/use-toast';
 
 export default function ProductDetails({ product }: { product: Product | null }) {
+  const { addToCart } = useCart();
+  const { toast } = useToast();
+
   if (!product) {
-    return <div>Loading product...</div>; // or your preferred loading/error state
+    return <div>Loading product...</div>;
   }
 
   const hasPricingOptions = Array.isArray(product.pricingOptions) && product.pricingOptions.length > 0;
   
+  const defaultPricingOption: PricingOption | null = product ? { name: 'Standard License', price: product.price } : null;
+
   const [selectedOption, setSelectedOption] = useState<PricingOption | null>(
-    hasPricingOptions ? product.pricingOptions[0] : null
+    hasPricingOptions ? product.pricingOptions[0] : defaultPricingOption
   );
+
+  const handleAddToCart = () => {
+    if (product && selectedOption) {
+      addToCart(product, selectedOption);
+    } else if (hasPricingOptions && !selectedOption) {
+       toast({
+            variant: 'destructive',
+            title: 'অনুগ্রহ করে একটি প্যাকেজ নির্বাচন করুন।',
+            description: 'আপনি কার্টে যোগ করার আগে একটি প্যাকেজ বাছাই করতে হবে।',
+        })
+    }
+  };
 
   const mainVariants = {
     hidden: { opacity: 0 },
@@ -27,13 +46,6 @@ export default function ProductDetails({ product }: { product: Product | null })
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { type: 'spring' } },
   };
-
-  const CtaButton = (
-    <Button size="lg" className="bg-primary hover:bg-primary/90 w-full text-base font-medium py-6 rounded-lg shadow-lg shadow-primary/30 hover:scale-105 transition-transform">
-      <Plus className="mr-2 h-5 w-5" />
-      কার্টে যোগ করুন
-    </Button>
-  );
 
   return (
     <div className="lg:sticky lg:top-24">
@@ -83,11 +95,21 @@ export default function ProductDetails({ product }: { product: Product | null })
 
         <motion.div variants={itemVariants}>
           {product.ctaUrl ? (
-            <Link href={product.ctaUrl} target="_blank" rel="noopener noreferrer">
-              {CtaButton}
-            </Link>
+            <Button asChild size="lg" className="bg-primary hover:bg-primary/90 w-full text-base font-medium py-6 rounded-lg shadow-lg shadow-primary/30 hover:scale-105 transition-transform">
+              <Link href={product.ctaUrl} target="_blank" rel="noopener noreferrer">
+                এখনই কিনুন
+              </Link>
+            </Button>
           ) : (
-            CtaButton
+            <Button
+              size="lg"
+              className="bg-primary hover:bg-primary/90 w-full text-base font-medium py-6 rounded-lg shadow-lg shadow-primary/30 hover:scale-105 transition-transform"
+              onClick={handleAddToCart}
+              disabled={hasPricingOptions && !selectedOption}
+            >
+              <Plus className="mr-2 h-5 w-5" />
+              কার্টে যোগ করুন
+            </Button>
           )}
         </motion.div>
       </motion.div>
