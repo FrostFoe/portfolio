@@ -100,24 +100,30 @@ export default function ProductDetails({ product }: { product: Product }) {
           </motion.div>
         )}
 
-        <motion.div variants={itemVariants}>
-          {product.ctaUrl ? (
+        <motion.div variants={itemVariants} className="flex items-center gap-4">
+          {selectedOption?.price === '0' ? (
             <Button asChild size="lg" className="bg-primary hover:bg-primary/90 w-full text-base font-medium py-6 rounded-lg shadow-lg shadow-primary/30 hover:scale-105 transition-transform">
-              <Link href={product.ctaUrl} target="_blank" rel="noopener noreferrer">
-                এখনই কিনুন
+              <Link href={product.redirectUrl ?? '#'} target="_blank" rel="noopener noreferrer">
+                Get Now
               </Link>
             </Button>
           ) : (
-            <Button
-              size="lg"
-              className="bg-primary hover:bg-primary/90 w-full text-base font-medium py-6 rounded-lg shadow-lg shadow-primary/30 hover:scale-105 transition-transform"
-              onClick={handleAddToCart}
-              disabled={!selectedOption}
-            >
-              <Plus className="mr-2 h-5 w-5" />
-              কার্টে যোগ করুন
+            <Button asChild size="lg" className="bg-primary hover:bg-primary/90 w-full text-base font-medium py-6 rounded-lg shadow-lg shadow-primary/30 hover:scale-105 transition-transform">
+              <Link href={product.redirectUrl ?? '#'} target="_blank" rel="noopener noreferrer">
+                Buy Now
+              </Link>
             </Button>
           )}
+          <Button
+            size="lg"
+            variant="outline"
+            className="w-full text-base font-medium py-6 rounded-lg hover:scale-105 transition-transform"
+            onClick={handleAddToCart}
+            disabled={!selectedOption}
+          >
+            <Plus className="mr-2 h-5 w-5" />
+            Add To Cart
+          </Button>
         </motion.div>
       </motion.div>
     </div>

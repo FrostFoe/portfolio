@@ -22,6 +22,7 @@ export type Product = {
   content: string;
   tags: string[];
   ctaUrl?: string;
+  redirectUrl?: string;
   published?: boolean;
   [key: string]: any;
 };
