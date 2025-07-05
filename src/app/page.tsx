@@ -1,6 +1,8 @@
 import { Suspense } from 'react';
 import Footer from '@/components/Footer';
-import Navbar from '@/components/Navbar';
+import dynamic from 'next/dynamic';
+
+const DynamicNavbar = dynamic(() => import('@/components/Navbar'), { ssr: false });
 import Hero from '@/components/Hero';
 import { getProducts } from '@/lib/products';
 import HomeClient from '@/components/HomeClient';
@@ -41,7 +43,7 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Navbar />
+      <DynamicNavbar />
       <main className="flex-grow">
         <Hero />
         <Suspense fallback={<Loading />}>

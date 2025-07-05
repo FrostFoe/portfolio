@@ -11,8 +11,12 @@ interface HomeClientProps {
 }
 
 export default function HomeClient({ products }: HomeClientProps) {
+  const [searchQuery, setSearchQuery] = useState('');
   const searchParams = useSearchParams();
-  const searchQuery = searchParams.get('q') ?? '';
+
+  useEffect(() => {
+    setSearchQuery(searchParams.get('q') ?? '');
+  }, [searchParams]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(products);
 
   useEffect(() => {

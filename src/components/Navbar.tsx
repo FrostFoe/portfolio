@@ -15,10 +15,16 @@ const Navbar = () => {
 
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '');
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     setSearchQuery(searchParams.get('q') || '');
+  }, [searchParams]);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setSearchQuery(searchParams.get('q') || '');
+    }
   }, [searchParams]);
 
   const handleSearch = (e: FormEvent) => {

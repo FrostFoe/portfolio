@@ -7,7 +7,9 @@ import { useCart } from '@/hooks/use-cart';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Minus, Plus, Trash2, ShoppingCart } from 'lucide-react';
-import Navbar from '@/components/Navbar';
+import dynamic from 'next/dynamic';
+
+const DynamicNavbar = dynamic(() => import('@/components/Navbar'), { ssr: false });
 import Footer from '@/components/Footer';
 
 export default function CartPage() {
@@ -24,7 +26,7 @@ function CartPageContent() {
   if (items.length === 0) {
     return (
       <div className="flex flex-col min-h-screen">
-        <Navbar />
+        <DynamicNavbar />
         <main className="flex-grow flex flex-col items-center justify-center text-center px-6">
           <ShoppingCart className="h-24 w-24 text-gray-500 mb-6" />
           <h1 className="text-4xl font-bold mb-2">আপনার কার্ট খালি</h1>
@@ -40,7 +42,7 @@ function CartPageContent() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Navbar />
+      <DynamicNavbar />
       <main className="flex-grow max-w-7xl mx-auto px-6 py-24 w-full">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight">আপনার শপিং কার্ট</h1>

@@ -5,10 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { CartProvider } from "@/hooks/use-cart";
 import "./globals.css";
 
-const AnimatedBackground = dynamic(() => import('@/components/AnimatedBackground'), {
-  ssr: false,
-  loading: () => <div className="fixed top-0 left-0 w-full h-full bg-black" />,
-});
+import ClientAnimatedBackground from '@/components/ClientAnimatedBackground';
 
 const hindSiliguri = Hind_Siliguri({
   subsets: ["bengali"],
@@ -42,7 +39,7 @@ export default function RootLayout({
     <html lang="bn" className="dark">
       <body className={`${hindSiliguri.className} text-foreground antialiased`}>
         <CartProvider>
-          <AnimatedBackground />
+          <ClientAnimatedBackground />
           <div className="relative z-0">
             {children}
           </div>
