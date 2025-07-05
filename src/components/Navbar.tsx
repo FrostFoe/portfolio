@@ -31,9 +31,9 @@ const Navbar = () => {
     e.preventDefault();
     const formattedQuery = searchQuery.trim();
     if (formattedQuery) {
-        router.push(`/?q=${encodeURIComponent(formattedQuery)}`);
+        router.push(`/search?q=${encodeURIComponent(formattedQuery)}`);
     } else {
-        router.push('/');
+        router.push('/search');
     }
     if (isMenuOpen) {
       toggleMenu();

@@ -1,9 +1,8 @@
 import { Suspense } from 'react';
 import Footer from '@/components/Footer';
 import dynamic from 'next/dynamic';
-import Hero from '@/components/Hero';
 import { getProducts } from '@/lib/products';
-import HomeClient from '@/components/HomeClient';
+import SearchClient from '@/components/SearchClient';
 import { Skeleton } from '@/components/ui/skeleton';
 
 const DynamicNavbar = dynamic(() => import('@/components/Navbar'), { ssr: false });
@@ -38,16 +37,15 @@ function Loading() {
   );
 }
 
-export default async function Home() {
+export default async function SearchPage() {
   const products = await getProducts();
 
   return (
     <div className="flex flex-col min-h-screen">
       <DynamicNavbar />
       <main className="flex-grow">
-        <Hero />
         <Suspense fallback={<Loading />}>
-          <HomeClient products={products} />
+          <SearchClient products={products} />
         </Suspense>
       </main>
       <Footer />
